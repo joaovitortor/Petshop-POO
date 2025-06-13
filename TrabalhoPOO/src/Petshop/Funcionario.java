@@ -1,9 +1,19 @@
 package Petshop;
 
 public class Funcionario {
-	private String nome, qualificacao, descricaoFuncao, cargaHorariaSemanal;
-	private int numMatricula;
+	private String nome, qualificacao, descricaoFuncao;
+	private int numMatricula, cargaHorariaSemanal;
 	
+	public Funcionario(String nome, String qualificacao, String descricaoFuncao, int cargaHorariaSemanal,
+			int numMatricula) {
+		super();
+		this.nome = nome;
+		this.qualificacao = qualificacao;
+		this.descricaoFuncao = descricaoFuncao;
+		this.cargaHorariaSemanal = cargaHorariaSemanal;
+		this.numMatricula = numMatricula;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -23,10 +33,10 @@ public class Funcionario {
 	public void setDescricaoFuncao(String descricaoFuncao) {
 		this.descricaoFuncao = descricaoFuncao;
 	}
-	public String getCargaHorariaSemanal() {
+	public int getCargaHorariaSemanal() {
 		return cargaHorariaSemanal;
 	}
-	public void setCargaHorariaSemanal(String cargaHorariaSemanal) {
+	public void setCargaHorariaSemanal(int cargaHorariaSemanal) {
 		this.cargaHorariaSemanal = cargaHorariaSemanal;
 	}
 	public int getNumMatricula() {

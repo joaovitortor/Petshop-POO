@@ -2,12 +2,17 @@ package Petshop;
 
 public class Atendimento {
     private int codigo;
-    private String data;
-    private Cliente cliente;
-    private Animal animal;
-    private Funcionario funcionario;
+    private String data, cliente, animal, funcionario;
     
-    
+	public Atendimento(int codigo, String data, String cliente, String animal, String funcionario) {
+		super();
+		this.codigo = codigo;
+		this.data = data;
+		this.cliente = cliente;
+		this.animal = animal;
+		this.funcionario = funcionario;
+	}
+		
 	public int getCodigo() {
 		return codigo;
 	}
@@ -20,22 +25,22 @@ public class Atendimento {
 	public void setData(String data) {
 		this.data = data;
 	}
-	public Cliente getCliente() {
+	public String getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(String cliente) {
 		this.cliente = cliente;
 	}
-	public Animal getAnimal() {
+	public String getAnimal() {
 		return animal;
 	}
-	public void setAnimal(Animal animal) {
+	public void setAnimal(String animal) {
 		this.animal = animal;
 	}
-	public Funcionario getFuncionario() {
+	public String getFuncionario() {
 		return funcionario;
 	}
-	public void setFuncionario(Funcionario funcionario) {
+	public void setFuncionario(String funcionario) {
 		this.funcionario = funcionario;
 	}
     

@@ -1,12 +1,16 @@
 package Petshop;
 
 public class Cliente {
-	private String nome;
-	private String telefone;
-	private String email;
-	private String rg;
-	private String cpf;
+	private String nome, telefone, email, rg, cpf;
 	
+	public Cliente(String nome, String telefone, String email, String rg, String cpf) {
+		super();
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+		this.rg = rg;
+		this.cpf = cpf;
+	}
 	public String getNome() {
 		return nome;
 	}

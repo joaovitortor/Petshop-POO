@@ -3,6 +3,14 @@ package Petshop;
 public class Animal {
     private String nome;
     private float peso, altura;
+    
+	public Animal(String nome, float peso, float altura) {
+		super();
+		this.nome = nome;
+		this.peso = peso;
+		this.altura = altura;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
