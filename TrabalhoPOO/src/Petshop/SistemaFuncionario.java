@@ -40,7 +40,7 @@ public class SistemaFuncionario {
 
         if (i < funcionarios.size()){
             System.out.println("Cliente encontrado!");
-            System.out.println(funcionarios.get(i).exibirInformacoes());
+            funcionarios.get(i).exibirInformacoes();
         } else {
             System.out.println("Cliente nao encontrado");
         }
