@@ -44,8 +44,8 @@ public class Cliente {
 	public void exibirInformacoes(){
 		System.out.println("Nome: " + getNome());
 		System.out.println("Telefone: " + getTelefone());
-	}
-	
-	
-	
+		System.out.println("Email: " + getEmail());
+		System.out.println("RG: " + getRg());
+		System.out.println("CPF: " + getCpf());
+	}	
 }

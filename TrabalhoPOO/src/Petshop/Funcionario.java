@@ -17,7 +17,6 @@ public class Funcionario {
 	public String getNome() {
 		return nome;
 	}
-	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -44,6 +43,13 @@ public class Funcionario {
 	}
 	public void setNumMatricula(int numMatricula) {
 		this.numMatricula = numMatricula;
+	}
+	public void exibirInformacoes(){
+		System.out.println("Nome: " + getNome());
+		System.out.println("Número de matrícula: " + getNumMatricula());
+		System.out.println("Qualificação " + getQualificacao());
+		System.out.println("Descrição da função: " + getDescricaoFuncao());
+		System.out.println("Carga Horária Semanal: " + getCargaHorariaSemanal());
 	}
 
 	
