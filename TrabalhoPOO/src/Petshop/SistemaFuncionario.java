@@ -30,7 +30,6 @@ public class SistemaFuncionario {
 
     public void consultarFuncionario(){
         int numMatricula, i = 0;
-        String nome;
         System.out.print("Digite o número de matrícula do funcionario: ");
         numMatricula = Integer.parseInt(input.nextLine());
 
