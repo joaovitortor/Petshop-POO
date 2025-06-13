@@ -1,8 +1,7 @@
 package Petshop;
 
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 	
@@ -80,19 +79,25 @@ public class Main {
     }
 
     public static void operacoesCliente(Scanner input, ArrayList<Cliente> clientes){
-    	menuCliente();
     	int opcao;
-    	opcao = input.nextInt();
     	do {
+            menuCliente();
+            opcao = Integer.parseInt(input.nextLine());
     		switch (opcao){
     			case 1 -> cadastrarCliente(input, clientes);
-    			case 2 -> consultaCliente();
-    			case 3 -> alteraCliente();
-    			case 4 -> removeCliente();
+    			case 2 -> consultarCliente(input, clientes);
+    			case 3 -> alterarCliente(input, clientes);
+    			//case 4 -> removerCliente();
     		}
-    	}
+    	} while (opcao != 0);
     }
     
+    /**
+    * Cadastra um novo cliente no sistema.
+    *
+    * @param input Scanner usado para entrada de dados.
+    * @param clientes Lista onde o novo cliente será adicionado.
+    */
     public static void cadastrarCliente(Scanner input, ArrayList<Cliente> clientes){
         String nome, telefone, rg, cpf, email;
         System.out.print("Digite o nome do cliente: ");
@@ -106,6 +111,38 @@ public class Main {
         System.out.print("Digite o CPF do cliente: ");
         cpf = input.nextLine();
         clientes.add(new Cliente(nome, telefone, email, rg, cpf));
+    }
+
+    public static void consultarCliente(Scanner input, ArrayList<Cliente> clientes){
+        int i = 0;
+        String nome;
+        System.out.print("Digite o nome do cliente: ");
+        nome = input.nextLine();
+
+        while (i < clientes.size() && !clientes.get(i).getNome().equals(nome)){
+            i++;
+        }
+
+        if (i < clientes.size()){
+            System.out.println("Cliente encontrado!");
+            System.out.println(clientes.get(i).getTelefone());
+        } else {
+            System.out.println("Cliente nao encontrado");
+        }
+    }
+
+    public static void alterarCliente(Scanner input, ArrayList<Cliente> clientes){
+        int i = 0;
+        System.out.print("Digite o cpf do cliente para alteração: ");
+        String cpf = input.nextLine();
+        while (i < clientes.size() && !clientes.get(i).getCpf().equals(cpf)){
+            i++;
+        }
+
+        if (i < clientes.size()){
+            System.out.println("Cliente encontrado. O que voce deseja alterar?");
+            clientes.get(i).exibirInformacoes();
+        }
     }
 
     public static void cadastrarFuncionario(Scanner input, ArrayList<Funcionario> funcionarios){
@@ -151,7 +188,6 @@ public class Main {
     	System.out.print("Digite o nome do funcionario: ");
     	funcionario = input.nextLine();
     }
-   
     
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
@@ -159,35 +195,20 @@ public class Main {
         ArrayList<Animal> animais = new ArrayList<Animal>();
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
         ArrayList<Atendimento> atendimentos = new ArrayList<Atendimento>();
-
-        //que negocio, a gente precisa printa os outro menus ne 
-        // simm a gente faz tipo aqui embaixo
-        // no comeco do operacao a gente chama o menu e começa um do while especifico != 0
-        // a gente nao pode so chama a funcao operacaoMenuPrincipal? minha cabeca ta toda embolada como pode
-        // kkkkkk como assim pera
-        // ta dificil conbersa por aqui prof libera logo
-        // é que tem a funcao operacaoMenuPrincipal, a gente nao vai mais usa ela?
-        //ahh entao a gente chama o menuCliente dentro de operacoes cliente?
         int opcaoPrincipal, opcaoEspecifica;
+
         do {
             menuPrincipal();
-            opcaoPrincipal = input.nextInt();
+            opcaoPrincipal = Integer.parseInt(input.nextLine());
             switch (opcaoPrincipal){
-                case 1 -> operacoesCliente();
-                case 2 -> operacoesFuncionario(input, funcionarios);
-                case 3 -> operacoesAnimal(input, animais);
-                case 4 -> operacoesAtendimento(input, );
-                case 0 -> System.out.println("Saindo...");
-                default -> System.out.println("Comando errado, tente novamente!");
-            }
-            
+                case 1 -> operacoesCliente(input, clientes);
+            //    case 2 -> operacoesFuncionario(input, funcionarios);
+            //    case 3 -> operacoesAnimal(input, animais);
+            //    case 4 -> operacoesAtendimento(input, );
+            //    case 0 -> System.out.println("Saindo...");
+            //    default -> System.out.println("Comando errado, tente novamente!");
+            } 
         } while (opcaoPrincipal != 0);
-        // a main fica desse tamanho, ai nos menus a gente tem que mandar as listas e o input pera que
-        //é que em cada menu
-        //mas ai nao teria que manda pra uma funcao operacao sii isso que eu falei antes laksjfksdfkjsfk
-        //como seria os nomes? gerenciaMenuFuncionariovdd poderia se operacoesFuncionario que nem ta em operacoesMenus
-        //ai vo apaga o operacoesMenus
-        // ok
     }
 }
 

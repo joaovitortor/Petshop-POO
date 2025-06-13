@@ -41,6 +41,10 @@ public class Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	public void exibirInformacoes(){
+		System.out.println("Nome: " + getNome());
+		System.out.println("Telefone: " + getTelefone());
+	}
 	
 	
 	
