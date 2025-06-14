@@ -46,5 +46,11 @@ public class Atendimento {
 		this.funcionario = funcionario;
 	}
     
-    
+    public void exibirInformacoes(){
+		System.out.println("Codigo: " + getCodigo());
+		System.out.println("Data: " + getData());
+		System.out.println("Cliente: " + getCliente().getNome());
+		System.out.println("Animal: " + getAnimal());
+		System.out.println("Funcionario: " + getFuncionario().getNome());
+	}
 }

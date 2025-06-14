@@ -3,7 +3,7 @@ package Petshop;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SistemaCliente {
+public class SistemaCliente implements Crud{
     protected ArrayList<Cliente> clientes;
     private Scanner input;
 
@@ -17,9 +17,9 @@ public class SistemaCliente {
     }
 
     public void menuCliente() {
-    	System.out.println("\n--------------------------");
-    	System.out.println("          Cliente         ");
-    	System.out.println("--------------------------");
+    	System.out.println("\n+--------------------------+");
+    	System.out.println("|          Cliente         |");
+    	System.out.println("+--------------------------+");
     	System.out.println("1)Cadastro");
     	System.out.println("2)Consulta");
     	System.out.println("3)Alteração");
@@ -34,10 +34,10 @@ public class SistemaCliente {
             menuCliente();
             opcao = Integer.parseInt(input.nextLine());
     		switch (opcao){
-    			case 1 -> cadastrarCliente();
-    			case 2 -> consultarCliente();
-    			case 3 -> alterarCliente();
-    			//case 4 -> removerCliente();
+    			case 1 -> cadastrar();
+    			case 2 -> consultar();
+    			case 3 -> alterar();
+    			case 4 -> remover();
     		}
     	} while (opcao != 0);
     }
@@ -48,7 +48,8 @@ public class SistemaCliente {
     * @param input Scanner usado para entrada de dados.
     * @param clientes Lista onde o novo cliente será adicionado.
     */
-    public void cadastrarCliente(){
+    @Override
+    public void cadastrar(){
         String nome, telefone, rg, cpf, email;
         System.out.print("Digite o nome do cliente: ");
         nome = input.nextLine();
@@ -63,7 +64,8 @@ public class SistemaCliente {
         clientes.add(new Cliente(nome, telefone, email, rg, cpf));
     }
 
-    public void consultarCliente(){
+    @Override
+    public void consultar(){
         int i = 0;
         String cpf;
         System.out.print("Digite o CPF do cliente: ");
@@ -92,7 +94,8 @@ public class SistemaCliente {
         System.out.println("O que deseja alterar?");
     }
 
-    public void alterarCliente(){
+    @Override
+    public void alterar(){
         int i = 0, opcao;
         System.out.print("Digite o cpf do cliente para alteração: ");
         String cpf = input.nextLine();
@@ -139,6 +142,27 @@ public class SistemaCliente {
                     }       
                 }      
             } while (opcao < 0 || opcao > 5);
+        }
+    }
+
+    @Override
+    public void remover(){
+
+    }
+
+    public ArrayList<Cliente> getListaCliente(){
+        return clientes;
+    }   
+
+    public Cliente buscaPorCpf(String cpf){
+        int i = 0;
+        while (i < clientes.size() && !clientes.get(i).getCpf().equals(cpf)){
+                i++;
+        }
+        if (i < clientes.size() && clientes.get(i).getCpf().equals(cpf)){
+            return clientes.get(i);
+        } else {
+            return null;
         }
     }
 }
