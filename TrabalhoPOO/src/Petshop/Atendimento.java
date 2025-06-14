@@ -2,11 +2,12 @@ package Petshop;
 
 public class Atendimento {
     private int codigo;
-    private String data, animal;
+    private String data;
 	private Cliente cliente;
+	private Animal animal;
 	private Funcionario funcionario;
     
-	public Atendimento(int codigo, String data, Cliente cliente, String animal, Funcionario funcionario) {
+	public Atendimento(int codigo, String data, Cliente cliente, Animal animal, Funcionario funcionario) {
 		super();
 		this.codigo = codigo;
 		this.data = data;
@@ -33,10 +34,10 @@ public class Atendimento {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public String getAnimal() {
+	public Animal getAnimal() {
 		return animal;
 	}
-	public void setAnimal(String animal) {
+	public void setAnimal(Animal animal) {
 		this.animal = animal;
 	}
 	public Funcionario getFuncionario() {
@@ -50,7 +51,7 @@ public class Atendimento {
 		System.out.println("Codigo: " + getCodigo());
 		System.out.println("Data: " + getData());
 		System.out.println("Cliente: " + getCliente().getNome());
-		System.out.println("Animal: " + getAnimal());
+		System.out.println("Animal: " + getAnimal().getNome());
 		System.out.println("Funcionario: " + getFuncionario().getNome());
 	}
 }

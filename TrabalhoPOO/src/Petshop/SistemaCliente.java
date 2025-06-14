@@ -20,11 +20,12 @@ public class SistemaCliente implements Crud{
     	System.out.println("\n+--------------------------+");
     	System.out.println("|          Cliente         |");
     	System.out.println("+--------------------------+");
-    	System.out.println("1)Cadastro");
-    	System.out.println("2)Consulta");
-    	System.out.println("3)Alteração");
-    	System.out.println("4)Remoção");
-    	System.out.println("0)Voltar");
+    	System.out.println("1) Cadastro");
+    	System.out.println("2) Consulta");
+    	System.out.println("3) Alteração");
+    	System.out.println("4) Remoção");
+        System.out.println("5) Relatório");
+    	System.out.println("0) Voltar");
     	System.out.print("Digite o comando desejado: ");
     }
     
@@ -38,6 +39,7 @@ public class SistemaCliente implements Crud{
     			case 2 -> consultar();
     			case 3 -> alterar();
     			case 4 -> remover();
+                case 5 -> relatorio();
     		}
     	} while (opcao != 0);
     }
@@ -150,19 +152,36 @@ public class SistemaCliente implements Crud{
 
     }
 
+    @Override
+    public void relatorio(){
+        int i = 1;
+        if(clientes.size() > 0){
+            for(Cliente cliente: clientes){
+            System.out.println("---------------------------");
+            System.out.println("\nCliente " + i);
+            cliente.exibirInformacoes();
+            i++;
+            }
+        } else {
+            System.out.println("Nenhum cliente cadastrado.");
+        }
+    }
+
     public ArrayList<Cliente> getListaCliente(){
         return clientes;
     }   
 
     public Cliente buscaPorCpf(String cpf){
         int i = 0;
-        while (i < clientes.size() && !clientes.get(i).getCpf().equals(cpf)){
-                i++;
+        boolean achou = false;
+
+        while (i < clientes.size() && !achou){
+            if(clientes.get(i).getCpf().equals(cpf)){
+                achou = true;
+                return clientes.get(i);
+            }
+            i++;
         }
-        if (i < clientes.size() && clientes.get(i).getCpf().equals(cpf)){
-            return clientes.get(i);
-        } else {
-            return null;
-        }
+        return null;
     }
-}
+}   

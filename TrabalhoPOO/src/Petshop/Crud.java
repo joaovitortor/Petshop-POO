@@ -5,4 +5,5 @@ public interface Crud {
     public void consultar();
     public void alterar();
     public void remover();
+    public void relatorio();
 }

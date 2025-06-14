@@ -136,7 +136,22 @@ public class SistemaFuncionario implements Crud{
     }
     @Override
     public void remover(){
+        
+    }
 
+    @Override
+    public void relatorio(){
+        int i = 1;
+        if(funcionarios.size() > 0){
+            for(Funcionario funcionario: funcionarios){
+            System.out.println("---------------------------");
+            System.out.println("\nCliente " + i);
+            funcionario.exibirInformacoes();
+            i++;
+            }
+        } else {
+            System.out.println("Nenhum cliente cadastrado.");
+        }
     }
 
     public ArrayList<Funcionario> getListaFuncionario(){
@@ -145,14 +160,15 @@ public class SistemaFuncionario implements Crud{
 
     public Funcionario buscaPorNumMatricula(int numMatricula){
         int i = 0;
-        while (i < funcionarios.size() && funcionarios.get(i).getNumMatricula() != numMatricula){
-                i++;
+        boolean achou = false;
+        while (i < funcionarios.size() && !achou){
+            if(funcionarios.get(i).getNumMatricula() == numMatricula){
+                achou = true;
+                return funcionarios.get(i);
+            }
+            i++;
         }
-        if (i < funcionarios.size() && funcionarios.get(i).getNumMatricula() == numMatricula){
-            return funcionarios.get(i);
-        } else {
-            return null;
-        }
+        return null;
     }
 }
 

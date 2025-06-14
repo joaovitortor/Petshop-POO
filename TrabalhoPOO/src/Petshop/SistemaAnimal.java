@@ -3,13 +3,14 @@ package Petshop;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SistemaAnimal extends SistemaCliente{
+public class SistemaAnimal implements Crud{
     private ArrayList<Animal> animais;
+    private SistemaCliente sistemaCliente;
     private Scanner input;
 
-    public SistemaAnimal(Scanner input){
-        super(input);
+    public SistemaAnimal(Scanner input, SistemaCliente sistemaCliente){
         this.animais = new ArrayList<>();
+        this.sistemaCliente = sistemaCliente;
         this.input = input; 
     }
 
@@ -39,18 +40,6 @@ public class SistemaAnimal extends SistemaCliente{
     	} while (opcao != 0);
     }
 
-    public boolean buscaPorCpfbo(String cpf){
-        int i = 0;
-        while (i < clientes.size() && !clientes.get(i).getCpf().equals(cpf)){
-                i++;
-        }
-        if (i < clientes.size() && clientes.get(i).getCpf().equals(cpf)){
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
     @Override
     public void cadastrar(){
         String nome, especie, cpf;
@@ -62,8 +51,8 @@ public class SistemaAnimal extends SistemaCliente{
         System.out.print("Digite o CPF do dono: ");
         cpf = input.nextLine();
 
-        if (buscaPorCpfbo(cpf)) {
-            dono = clientes.get(i);  
+        if (sistemaCliente.buscaPorCpf(cpf) != null) {
+            dono = sistemaCliente.getListaCliente().get(i);  
             System.out.print("Digite o nome do animal: ");
             nome = input.nextLine();
             System.out.print("Digite a especie do animal: ");
@@ -80,10 +69,12 @@ public class SistemaAnimal extends SistemaCliente{
             String opcao = input.nextLine();
             switch (opcao) {
                 case "s":
-                    super.cadastrar();
+                    System.out.println("\nCadastro Cliente:");
+                    sistemaCliente.cadastrar();
+                    System.out.println("\nCliente cadastrado. Insira o CPF novamente.\n");
                     break;
                 default:
-                    System.out.println("Tente novamente!");
+                    System.out.println("Tente novamente!\n");
                     cadastrar();
                     break;
             }
@@ -101,7 +92,7 @@ public class SistemaAnimal extends SistemaCliente{
         while (i < animais.size() && !achou){
             if (animais.get(i).getId() == id){
                 achou = true;
-            } else{
+            }else{
                 i++;
             }
         }
@@ -124,20 +115,27 @@ public class SistemaAnimal extends SistemaCliente{
 
     }
 
+    @Override
+    public void relatorio(){
+        
+    }
+
     public ArrayList<Animal> getListaAnimal(){
         return animais; 
     }  
 
     public Animal buscaPorIDAnimal(int id){
         int i = 0;
-        while (i < animais.size() && animais.get(i).getId() != id){
-                i++;
+        boolean achou = false;
+
+        while (i < animais.size() && !achou){
+            if(animais.get(i).getId() == id){
+                achou = true;
+                return animais.get(i);
+            }
+            i++;
         }
-        if (i < animais.size() && animais.get(i).getId() == id){
-            return animais.get(i);
-        } else {
-            return null;
-        }
+        return null;
     }
 }
 
