@@ -9,6 +9,28 @@ public class GerenciarSistema {
     protected SistemaAnimal sistemaAnimal;
     protected SistemaAtendimento sistemaAtendimento;
 
+    /**
+     * Construtor da classe GerenciarSistema.
+     * Inicializa a lista de clientes e o input para leitura de dados.
+     * Inicializa o sistemaCliente com o input para leitura de dados.
+     * Inicializa o sistemaFuncionario com o input para leitura de dados.
+     * Inicialia o sistemaAnimal com o input para leitura de dados.
+     * Inicializa o sistemaAtendimento com o input para leitura de dados,
+     * com o sistemaCliente, com o sistemaFuncionario e com o sistemaAnimal.
+     * 
+     * Apos todos os sistemas serem inicializados:
+     * Seta o sistemaAtendimento e o sistemaAnimal no sistemaCliente para
+     * evitar problemas relacinados a dependencia circular.
+     * 
+     * Seta o sistemaAtendimento no sistemaFuncionario para evitar 
+     * problemas relacionados a dependencia circular.
+     * 
+     * Seta o sistemaCliente e o sistemaAtendimento no sistemaAnimal para
+     * evitar problemas relacionados a dependencia circular.
+     * 
+     * @param input O objeto Scanner utilizado para ler a entrada do usuario.
+     */
+    
     public GerenciarSistema(Scanner input){
         this.input = input;
         this.sistemaCliente = new SistemaCliente(input);
@@ -25,6 +47,9 @@ public class GerenciarSistema {
         this.sistemaAnimal.setSistemaAtendimento(this.sistemaAtendimento);
     }
 
+    /**
+     * Exibe o menu de operacoes do Petshop.
+     */
     public static void menuPrincipal(){
         System.out.println("\n+--------------------------+");
     	System.out.println("|         Petshop          |");
@@ -38,7 +63,9 @@ public class GerenciarSistema {
         System.out.print("Digite o comando desejado: ");
     }
 
-
+    /**
+     * Inicializa o sistema de gerenciamento do petshop.
+     */
     public void iniciar() {
         int opcao;
         try {
@@ -60,17 +87,3 @@ public class GerenciarSistema {
         }
     }
 }
-
-/*
-    try{
-
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida! Por favor, digite apenas números.");
-        }
- 
- 
- 
- 
- 
- 
-*/

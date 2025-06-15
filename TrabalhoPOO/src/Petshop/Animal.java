@@ -59,6 +59,6 @@ public class Animal {
 		System.out.println("Peso: " + getPeso());
 		System.out.println("Altura: " + getAltura());
 		System.out.println("ID: " + getId());
-		dono.exibirInformacoes();
+		System.out.println("Dono: " + getDono().getNome());
 	}	
 }
