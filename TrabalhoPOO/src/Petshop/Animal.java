@@ -46,6 +46,12 @@ public class Animal {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public Cliente getDono(){
+		return dono;
+	}
+	public void setDono(Cliente dono){
+		this.dono = dono;
+	}
 
 	public void exibirInformacoes(){
 		System.out.println("Nome: " + getNome());
